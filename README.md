@@ -2,6 +2,10 @@
 
 **TeamAligner** is a TypeScript-based product decision and alignment platform that helps teams face the same direction.
 
+## Demo
+
+<video src="https://github.com/EitaroY/team-aligner/raw/main/demo.mp4" controls width="100%"></video>
+
 It connects goals, metrics, evidence, recommendations, and execution into one shared system so product teams can answer:
 
 - What are we trying to achieve?
