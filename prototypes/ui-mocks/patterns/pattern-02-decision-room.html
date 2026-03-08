@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pattern 02 - Decision Room</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <span class="product-mark">Pattern 02</span>
+          <span class="page-title">Decision Room</span>
+          <span class="badge">主ユースケース: デイリー意思決定会議</span>
+        </div>
+        <div class="topbar-right">
+          <span class="small-chip" data-role="now">更新: --</span>
+          <button class="btn" data-action="cycle-recommendation">推奨を切り替え</button>
+          <button class="btn primary">会議メモを確定</button>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <h3 class="panel-title">Meeting Focus</h3>
+            <p class="panel-sub">目標: 24時間以内に優先アクションを1つ決め、責任者を固定する</p>
+          </div>
+          <div data-role="signals"></div>
+        </div>
+
+        <div class="flow-row">
+          <div class="flow-step">
+            <h5>変化</h5>
+            <p>Activation低下とサポート問合せ増加が同時発生。</p>
+          </div>
+          <div class="flow-step">
+            <h5>重要性</h5>
+            <p>Q2 OKR達成確率が 64% → 49% に低下。</p>
+          </div>
+          <div class="flow-step">
+            <h5>判断</h5>
+            <p>候補A/B/Cから本日1件を採択。</p>
+          </div>
+          <div class="flow-step">
+            <h5>実行</h5>
+            <p>Jira / PR / 顧客連絡を即時起票。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="layout-main cols-4" style="margin-top: 14px">
+        <article class="panel stack">
+          <div class="panel-header">
+            <div>
+              <h3 class="panel-title">Evidence</h3>
+              <p class="panel-sub">根拠を短冊化</p>
+            </div>
+          </div>
+          <div class="item-card">
+            <div class="item-title">Analytics</div>
+            <p class="item-text">Onboarding step2 dropoff +18%</p>
+          </div>
+          <div class="item-card">
+            <div class="item-title">Support</div>
+            <p class="item-text">権限設定に関する問い合わせ 7件 / 48h</p>
+          </div>
+          <div class="item-card">
+            <div class="item-title">Sales</div>
+            <p class="item-text">失注理由の36%が「管理権限不足」</p>
+          </div>
+          <div class="item-card">
+            <div class="item-title">Issue/PR</div>
+            <p class="item-text">KPI算出式の差分 issue #884</p>
+          </div>
+        </article>
+
+        <article class="panel stack">
+          <div class="panel-header">
+            <div>
+              <h3 class="panel-title">Options</h3>
+              <p class="panel-sub">議論中の候補</p>
+            </div>
+          </div>
+          <div class="item-card selected">
+            <div class="item-top">
+              <span class="item-title">A. Onboarding導線短縮</span>
+              <span class="badge good">推し票 5</span>
+            </div>
+            <p class="item-text">短期でActivationに効く。顧客影響が最も直接的。</p>
+          </div>
+          <div class="item-card">
+            <div class="item-top">
+              <span class="item-title">B. Enterprise権限先行</span>
+              <span class="badge warn">推し票 3</span>
+            </div>
+            <p class="item-text">ARR保全には有効。工数はやや重い。</p>
+          </div>
+          <div class="item-card">
+            <div class="item-top">
+              <span class="item-title">C. KPI定義統一</span>
+              <span class="badge warn">推し票 2</span>
+            </div>
+            <p class="item-text">判断精度は上がるが収益影響は遅い。</p>
+          </div>
+        </article>
+
+        <article class="panel stack">
+          <div class="panel-header">
+            <div>
+              <h3 class="panel-title">Recommendation</h3>
+              <p class="panel-sub">会議中に更新される推奨判断</p>
+            </div>
+            <span class="badge good" data-role="rec-eta">--</span>
+          </div>
+
+          <div class="callout">
+            <strong data-role="rec-title">--</strong>
+            <p data-role="rec-reason">--</p>
+          </div>
+
+          <table class="table-lite">
+            <thead>
+              <tr>
+                <th>評価軸</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>目標インパクト</td>
+                <td>9 / 10</td>
+              </tr>
+              <tr>
+                <td>検証速度</td>
+                <td>8 / 10</td>
+              </tr>
+              <tr>
+                <td>依存リスク</td>
+                <td>6 / 10</td>
+              </tr>
+              <tr>
+                <td>説明責任の明確さ</td>
+                <td>9 / 10</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="section-note">推奨オーナー: <strong data-role="rec-owner">--</strong></p>
+        </article>
+
+        <article class="panel stack muted">
+          <div class="panel-header">
+            <div>
+              <h3 class="panel-title">Execution Draft</h3>
+              <p class="panel-sub">会議後10分で実行開始</p>
+            </div>
+          </div>
+
+          <div class="execute-step"><strong>Ticket:</strong> onboarding-step2簡略化仕様を確定（今日 16:00）</div>
+          <div class="execute-step"><strong>PR:</strong> UI導線変更をfeature flagで投入（明日 12:00）</div>
+          <div class="execute-step"><strong>Sales:</strong> 影響顧客に暫定回避策を送信（今日中）</div>
+          <div class="execute-step"><strong>Comms:</strong> なぜ今この判断かの説明文をSlack配信（今すぐ）</div>
+
+          <div class="exec-actions">
+            <button class="btn primary">一括で起票</button>
+            <button class="btn">議事録へ反映</button>
+          </div>
+        </article>
+      </section>
+
+      <div class="footer-nav">
+        <a class="pattern-link" href="../index.html">Overview</a>
+        <a class="pattern-link" href="./pattern-01-timeline.html">Pattern 01</a>
+        <a class="pattern-link active" href="./pattern-02-decision-room.html">Pattern 02</a>
+        <a class="pattern-link" href="./pattern-03-option-lab.html">Pattern 03</a>
+        <a class="pattern-link" href="./pattern-04-execution-bridge.html">Pattern 04</a>
+        <a class="pattern-link" href="./pattern-05-alignment-radar.html">Pattern 05</a>
+      </div>
+    </div>
+    <script src="../mock-data.js"></script>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeamAligner Priority Workbench</title>
+    <link rel="stylesheet" href="./workbench.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="kicker">TeamAligner</p>
+          <h1>Priority Workbench</h1>
+          <p class="sub">Use GitHub + user monitoring signals to rank what to build next with numeric evidence.</p>
+        </div>
+        <div class="stamp" data-role="updated-at">Updated: --</div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Data Input</h2>
+          <p>In production this will use API integrations. This is a mocked connection flow.</p>
+        </div>
+        <div class="connect-grid">
+          <div class="connect-card">
+            <div>
+              <strong>GitHub Repository</strong>
+              <p class="muted">issues / PRs / changelog / velocity</p>
+            </div>
+            <div class="connect-actions">
+              <span class="status" data-role="github-status">Not connected</span>
+              <button class="btn" data-action="connect-github">Connect</button>
+            </div>
+          </div>
+
+          <div class="connect-card">
+            <div>
+              <strong>User Monitoring</strong>
+              <p class="muted">analytics / support logs / session events</p>
+            </div>
+            <div class="connect-actions">
+              <span class="status" data-role="monitoring-status">Not connected</span>
+              <button class="btn" data-action="connect-monitoring">Connect</button>
+            </div>
+          </div>
+        </div>
+        <div class="actions-row">
+          <button class="btn primary" data-action="load-snapshot">Load latest snapshot</button>
+          <span class="hint">Refreshes Now/Future recommendations and ticket priority order.</span>
+        </div>
+      </section>
+
+      <section class="grid two">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Product Snapshot</h2>
+            <p>Summary of feature usage and delivery status</p>
+          </div>
+
+          <div class="metric-grid" data-role="metrics"></div>
+
+          <div class="divider"></div>
+
+          <h3>Feature Utilization</h3>
+          <table class="table" data-role="utilization-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Usage</th>
+                <th>MoM delta</th>
+                <th>Customer expectation</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Priority Engine</h2>
+            <p>
+              score = customer value + user expectation + strategic fit + delivery speed (inverse cost)
+            </p>
+          </div>
+
+          <div class="priority-columns">
+            <div>
+              <h3>Now (0-2 months)</h3>
+              <div class="priority-list" data-role="now-priority"></div>
+            </div>
+            <div>
+              <h3>Future (3-6 months)</h3>
+              <div class="priority-list" data-role="future-priority"></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid two">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Next Feature Tickets</h2>
+            <p>Manually reorder cards with up/down controls. Report output updates from this order.</p>
+          </div>
+          <div class="actions-row compact">
+            <button class="btn" data-action="sort-now">Reset to Now score order</button>
+            <button class="btn" data-action="sort-future">Sort by Future score</button>
+          </div>
+          <div class="ticket-list" data-role="ticket-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Roadmap Report Output</h2>
+            <p>Generates report variants based on ordering + effort</p>
+          </div>
+
+          <div class="report-controls">
+            <label>
+              Audience
+              <select data-role="audience">
+                <option value="executive">Executive</option>
+                <option value="engineering">Engineering</option>
+                <option value="business">Business</option>
+              </select>
+            </label>
+            <label>
+              Prompt (optional)
+              <textarea data-role="custom-prompt" rows="4" placeholder="Example: emphasize competitive positioning and Q3 revenue impact first"></textarea>
+            </label>
+            <button class="btn primary" data-action="generate-report">Output</button>
+          </div>
+
+          <pre class="report-output" data-role="report-output">Click "Load latest snapshot" first.</pre>
+        </article>
+      </section>
+    </main>
+
+    <script src="./workbench.js"></script>
+  </body>
+</html>

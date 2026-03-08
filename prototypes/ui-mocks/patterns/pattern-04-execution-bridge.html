@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pattern 04 - Execution Bridge</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <span class="product-mark">Pattern 04</span>
+          <span class="page-title">Execution Bridge</span>
+          <span class="badge">主ユースケース: 判断後の実行停滞を防ぐ</span>
+        </div>
+        <div class="topbar-right">
+          <span class="small-chip" data-role="now">更新: --</span>
+          <button class="btn" data-action="cycle-recommendation">推奨を切り替え</button>
+          <button class="btn primary">実行計画をロック</button>
+        </div>
+      </header>
+
+      <section class="layout-main cols-2">
+        <article class="stack">
+          <div class="panel muted">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Recommended Decision</h3>
+                <p class="panel-sub">判断内容を即アクション化するための起点</p>
+              </div>
+              <span class="badge good" data-role="rec-eta">--</span>
+            </div>
+
+            <div class="callout">
+              <strong data-role="rec-title">--</strong>
+              <p data-role="rec-reason">--</p>
+            </div>
+
+            <div class="keyline"></div>
+            <p class="hero-note">
+              説明責任テキスト:<br />
+              「目標未達の主要因は onboarding 離脱であり、顧客要望とsupport logsが一致。最短で検証できるため本判断を採択」
+            </p>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Changed Metrics and Risks</h3>
+                <p class="panel-sub">実行中に監視する指標</p>
+              </div>
+              <div data-role="signals"></div>
+            </div>
+
+            <table class="table-lite">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Current</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Activation</td>
+                  <td>41.2% (-6.8%)</td>
+                </tr>
+                <tr>
+                  <td>Trial→Paid</td>
+                  <td>13.7% (-1.9%)</td>
+                </tr>
+                <tr>
+                  <td>P1 Incidents</td>
+                  <td>+3 (48h)</td>
+                </tr>
+                <tr>
+                  <td>Decision Latency</td>
+                  <td>2.4日</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="keyline"></div>
+            <div class="stack">
+              <div class="item-card">
+                <div class="item-title">Risk 1: QAボトルネック</div>
+                <p class="item-text">回避策: feature flagで段階公開し、critical flowのみ先行テスト。</p>
+              </div>
+              <div class="item-card">
+                <div class="item-title">Risk 2: 営業連絡の遅れ</div>
+                <p class="item-text">回避策: 顧客テンプレートを先に生成し、CSMへ即配布。</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="stack">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Execution Board</h3>
+                <p class="panel-sub">今日 / 今週 / 検証で分割</p>
+              </div>
+            </div>
+
+            <div class="layout-main cols-3">
+              <div class="stack">
+                <div class="small-chip">Today</div>
+                <div class="item-card selected">
+                  <div class="item-title">Spec freeze</div>
+                  <p class="item-text">onboardingステップ統合仕様を16:00までに確定。</p>
+                </div>
+                <div class="item-card">
+                  <div class="item-title">Stakeholder update</div>
+                  <p class="item-text">営業/CSに影響範囲を共有。</p>
+                </div>
+              </div>
+
+              <div class="stack">
+                <div class="small-chip">This Week</div>
+                <div class="item-card selected">
+                  <div class="item-title">Implementation</div>
+                  <p class="item-text">feature flag付きで導線変更を実装。</p>
+                </div>
+                <div class="item-card">
+                  <div class="item-title">Tracking</div>
+                  <p class="item-text">analytics eventを追加し差分を可視化。</p>
+                </div>
+              </div>
+
+              <div class="stack">
+                <div class="small-chip">Validation</div>
+                <div class="item-card selected">
+                  <div class="item-title">48h Review</div>
+                  <p class="item-text">Activation + FAQ件数で効果判定。</p>
+                </div>
+                <div class="item-card">
+                  <div class="item-title">Fallback</div>
+                  <p class="item-text">改善不十分なら権限施策を次点採択。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel muted">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Auto Generated Drafts</h3>
+                <p class="panel-sub">そのまま貼れる実行文書</p>
+              </div>
+            </div>
+
+            <div class="execute-list">
+              <div class="execute-step"><strong>Jira draft</strong>: TA-241 Onboarding step2 simplification / owner: <span data-role="rec-owner">--</span></div>
+              <div class="execute-step"><strong>Slack draft</strong>: なぜ今A案を採択したかの説明テンプレート</div>
+              <div class="execute-step"><strong>PR draft</strong>: feature flag + rollback 条件を含むテンプレート</div>
+            </div>
+
+            <div class="exec-actions" style="margin-top: 10px">
+              <button class="btn primary">3つまとめて出力</button>
+              <button class="btn">根拠リンクを付与</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <div class="footer-nav">
+        <a class="pattern-link" href="../index.html">Overview</a>
+        <a class="pattern-link" href="./pattern-01-timeline.html">Pattern 01</a>
+        <a class="pattern-link" href="./pattern-02-decision-room.html">Pattern 02</a>
+        <a class="pattern-link" href="./pattern-03-option-lab.html">Pattern 03</a>
+        <a class="pattern-link active" href="./pattern-04-execution-bridge.html">Pattern 04</a>
+        <a class="pattern-link" href="./pattern-05-alignment-radar.html">Pattern 05</a>
+      </div>
+    </div>
+    <script src="../mock-data.js"></script>
+  </body>
+</html>

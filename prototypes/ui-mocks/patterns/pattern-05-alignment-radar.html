@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pattern 05 - Alignment Radar</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <span class="product-mark">Pattern 05</span>
+          <span class="page-title">Alignment Radar</span>
+          <span class="badge">主ユースケース: 部門横断の方向合わせ</span>
+        </div>
+        <div class="topbar-right">
+          <span class="small-chip" data-role="now">更新: --</span>
+          <button class="btn" data-action="cycle-recommendation">推奨を切り替え</button>
+          <button class="btn primary">整合レビューを開始</button>
+        </div>
+      </header>
+
+      <section class="layout-main cols-2">
+        <article class="stack">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Alignment Snapshot</h3>
+                <p class="panel-sub">チームごとの目標整合度と懸念点</p>
+              </div>
+              <div data-role="signals"></div>
+            </div>
+
+            <div class="mini-chart">
+              <div class="bar-row">
+                <span>Product</span>
+                <div class="bar-track"><div class="bar" style="width: 81%"></div></div>
+                <span>81</span>
+              </div>
+              <div class="bar-row">
+                <span>Engineering</span>
+                <div class="bar-track"><div class="bar" style="width: 76%"></div></div>
+                <span>76</span>
+              </div>
+              <div class="bar-row">
+                <span>Sales</span>
+                <div class="bar-track"><div class="bar" style="width: 58%"></div></div>
+                <span>58</span>
+              </div>
+              <div class="bar-row">
+                <span>Customer Success</span>
+                <div class="bar-track"><div class="bar" style="width: 63%"></div></div>
+                <span>63</span>
+              </div>
+              <div class="bar-row">
+                <span>Leadership</span>
+                <div class="bar-track"><div class="bar" style="width: 84%"></div></div>
+                <span>84</span>
+              </div>
+            </div>
+
+            <div class="keyline"></div>
+
+            <table class="table-lite">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>ズレの要因</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sales</td>
+                  <td>短期受注優先で権限機能を強く要求</td>
+                </tr>
+                <tr>
+                  <td>Engineering</td>
+                  <td>運用負債解消を優先し速度と競合</td>
+                </tr>
+                <tr>
+                  <td>CS</td>
+                  <td>既存顧客のサポート負荷増大を懸念</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Why It Matters</h3>
+                <p class="panel-sub">会社ミッション・バリューとの接続</p>
+              </div>
+            </div>
+            <div class="item-card">
+              <div class="item-title">Mission Fit</div>
+              <p class="item-text">「チームが同じ方向を向ける」ため、短期売上と利用体験を同時に説明できる判断が必要。</p>
+            </div>
+            <div class="item-card" style="margin-top: 10px">
+              <div class="item-title">Value Fit</div>
+              <p class="item-text">Customer truth first: 顧客の摩擦点に最短で対応しつつ、判断根拠を公開する。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="stack">
+          <div class="panel muted">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Recommended Alignment Decision</h3>
+                <p class="panel-sub">部署間で共有する最終判断</p>
+              </div>
+              <span class="badge good" data-role="rec-eta">--</span>
+            </div>
+
+            <div class="callout">
+              <strong data-role="rec-title">--</strong>
+              <p data-role="rec-reason">--</p>
+            </div>
+
+            <div class="keyline"></div>
+
+            <div class="grid-flow">
+              <div class="flow-row">
+                <div class="flow-step">
+                  <h5>Product</h5>
+                  <p>導線簡略化の仕様責任を持つ</p>
+                </div>
+                <div class="flow-step">
+                  <h5>Engineering</h5>
+                  <p>flag運用と安全なロールバックを設計</p>
+                </div>
+                <div class="flow-step">
+                  <h5>Sales</h5>
+                  <p>影響顧客へ暫定案を説明</p>
+                </div>
+                <div class="flow-step">
+                  <h5>CS</h5>
+                  <p>問い合わせの一次回答テンプレを配布</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Execution Draft</h3>
+                <p class="panel-sub">合意を実行に落とす</p>
+              </div>
+            </div>
+
+            <div class="execute-list">
+              <div class="execute-step"><strong>Step 1</strong>: 本日の合意事項を1ページに固定し、全チームへ配信</div>
+              <div class="execute-step"><strong>Step 2</strong>: owner <span data-role="rec-owner">--</span> が明朝の進捗レビューを主催</div>
+              <div class="execute-step"><strong>Step 3</strong>: 48時間後にKPI変化と顧客反応で再判断</div>
+            </div>
+
+            <div class="exec-actions" style="margin-top: 10px">
+              <button class="btn primary">実行ドラフトを配布</button>
+              <button class="btn">責任者をアサイン</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <div class="footer-nav">
+        <a class="pattern-link" href="../index.html">Overview</a>
+        <a class="pattern-link" href="./pattern-01-timeline.html">Pattern 01</a>
+        <a class="pattern-link" href="./pattern-02-decision-room.html">Pattern 02</a>
+        <a class="pattern-link" href="./pattern-03-option-lab.html">Pattern 03</a>
+        <a class="pattern-link" href="./pattern-04-execution-bridge.html">Pattern 04</a>
+        <a class="pattern-link active" href="./pattern-05-alignment-radar.html">Pattern 05</a>
+      </div>
+    </div>
+    <script src="../mock-data.js"></script>
+  </body>
+</html>
