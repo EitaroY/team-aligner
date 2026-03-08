@@ -4,7 +4,7 @@
 
 ## Demo
 
-https://github.com/EitaroY/team-aligner/releases/download/v0.1.0/demo.mp4
+![Demo](demo.gif)
 
 It connects goals, metrics, evidence, recommendations, and execution into one shared system so product teams can answer:
 
