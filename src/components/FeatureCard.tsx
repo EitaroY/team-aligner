@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import type { Feature } from "@/types";
 
 function trendIcon(trend: Feature["trend"], delta: number) {
@@ -20,7 +19,6 @@ export function FeatureCard({
   highlightContribution: number | null;
   outcomeName: string | null;
 }) {
-  const [expanded, setExpanded] = useState(false);
   const isDimmed =
     highlightContribution !== null && highlightContribution === 0;
 
@@ -44,7 +42,7 @@ export function FeatureCard({
         </div>
       </div>
 
-      {/* Usage bar — subtle blue-gray */}
+      {/* Usage bar */}
       <div className="mt-3 h-1.5 w-full rounded-full bg-slate-100 dark:bg-slate-800">
         <div
           className="h-full rounded-full bg-slate-300 dark:bg-slate-600 transition-all"
@@ -75,33 +73,10 @@ export function FeatureCard({
         {trendIcon(feature.trend, feature.trendDelta)}
       </div>
 
-      {/* Click to expand */}
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="mt-2 text-[10px] text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
-      >
-        <svg
-          className={`h-2.5 w-2.5 transition-transform ${expanded ? "rotate-90" : ""}`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
-        {expanded ? "Hide" : "Details"}
-      </button>
-
-      {/* Expanded description */}
-      {expanded && (
-        <p className="mt-1.5 text-xs text-muted-foreground">
-          {feature.description}
-        </p>
-      )}
+      {/* Description — always visible */}
+      <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+        {feature.description}
+      </p>
     </div>
   );
 }

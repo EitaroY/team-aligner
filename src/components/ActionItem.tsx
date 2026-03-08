@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import type { ActionRecommendation } from "@/types";
 import { EvidencePanel } from "./EvidencePanel";
 
@@ -33,7 +32,6 @@ export function ActionItem({
   onToggle: () => void;
   dragHandleProps?: React.HTMLAttributes<HTMLElement>;
 }) {
-  const [expanded, setExpanded] = useState(false);
   const hasUnavailable = action.teamRequirements.some((r) => !r.available);
 
   return (
@@ -129,89 +127,64 @@ export function ActionItem({
           )}
         </div>
 
-        {/* Click to expand */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
-        >
-          <svg
-            className={`h-3 w-3 transition-transform ${expanded ? "rotate-90" : ""}`}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-          {expanded ? "Hide details" : "View details"}
-        </button>
+        {/* Description */}
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          {action.description}
+        </p>
+
+        {/* Team requirements */}
+        {action.teamRequirements.length > 0 && (
+          <div className="space-y-1">
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">
+              Team
+            </p>
+            <div className="flex flex-wrap gap-x-3 gap-y-1">
+              {action.teamRequirements.map((req, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-1.5 text-xs"
+                >
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full flex-shrink-0 ${
+                      req.available
+                        ? "bg-emerald-400/60 dark:bg-emerald-500/50"
+                        : "bg-red-400/80 dark:bg-red-400/60"
+                    }`}
+                  />
+                  <span className="text-foreground/80">{req.role}</span>
+                  {req.note && (
+                    <span className="text-muted-foreground text-[10px]">
+                      ({req.note})
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Linked outcomes */}
+        {action.linkedOutcomeIds.length > 0 && (
+          <div className="space-y-1">
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">
+              Linked Outcomes
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {action.linkedOutcomeIds.map((id) => (
+                <span
+                  key={id}
+                  className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-muted-foreground"
+                >
+                  {id.replace("out-", "")}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
-      {/* Expanded section */}
-      {expanded && (
-        <div className="border-t border-border">
-          <div className="px-3 py-3 space-y-3">
-            <p className="text-xs text-muted-foreground">
-              {action.description}
-            </p>
-
-            {/* Team requirements */}
-            {action.teamRequirements.length > 0 && (
-              <div className="space-y-1">
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">
-                  Team
-                </p>
-                <div className="flex flex-wrap gap-x-3 gap-y-1">
-                  {action.teamRequirements.map((req, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-1.5 text-xs"
-                    >
-                      <span
-                        className={`h-1.5 w-1.5 rounded-full flex-shrink-0 ${
-                          req.available
-                            ? "bg-emerald-400/60 dark:bg-emerald-500/50"
-                            : "bg-red-400/80 dark:bg-red-400/60"
-                        }`}
-                      />
-                      <span className="text-foreground/80">{req.role}</span>
-                      {req.note && (
-                        <span className="text-muted-foreground text-[10px]">
-                          ({req.note})
-                        </span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Linked outcomes */}
-            {action.linkedOutcomeIds.length > 0 && (
-              <div className="space-y-1">
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">
-                  Linked Outcomes
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {action.linkedOutcomeIds.map((id) => (
-                    <span
-                      key={id}
-                      className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-muted-foreground"
-                    >
-                      {id.replace("out-", "")}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-          <EvidencePanel evidence={action.evidence} />
-        </div>
-      )}
+      {/* Evidence */}
+      <EvidencePanel evidence={action.evidence} />
     </div>
   );
 }
