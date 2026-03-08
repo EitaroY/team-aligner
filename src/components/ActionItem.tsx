@@ -12,6 +12,14 @@ const categoryLabel: Record<string, string> = {
   process: "Process",
 };
 
+const categoryStyle: Record<string, string> = {
+  feature: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
+  improvement: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
+  infrastructure: "bg-slate-100 text-slate-600 dark:bg-slate-700/30 dark:text-slate-300",
+  hiring: "bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300",
+  process: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300",
+};
+
 export function ActionItem({
   action,
   mode,
@@ -60,7 +68,11 @@ export function ActionItem({
               </span>
             )}
             <h3 className="text-sm font-medium truncate">{action.title}</h3>
-            <span className="flex-shrink-0 text-[10px] text-muted-foreground">
+            <span
+              className={`flex-shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium ${
+                categoryStyle[action.category] ?? "bg-secondary text-muted-foreground"
+              }`}
+            >
               {categoryLabel[action.category] ?? action.category}
             </span>
           </div>
@@ -111,7 +123,9 @@ export function ActionItem({
             </span>
           </div>
           {hasUnavailable && (
-            <span className="text-[10px] text-red-400/80">Hiring needed</span>
+            <span className="text-[10px] text-red-500/80 dark:text-red-400/80">
+              Hiring needed
+            </span>
           )}
         </div>
 
@@ -159,7 +173,9 @@ export function ActionItem({
                     >
                       <span
                         className={`h-1.5 w-1.5 rounded-full flex-shrink-0 ${
-                          req.available ? "bg-foreground/30" : "bg-red-400/80"
+                          req.available
+                            ? "bg-emerald-400/60 dark:bg-emerald-500/50"
+                            : "bg-red-400/80 dark:bg-red-400/60"
                         }`}
                       />
                       <span className="text-foreground/80">{req.role}</span>

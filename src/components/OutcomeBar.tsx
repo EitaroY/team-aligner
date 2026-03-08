@@ -37,9 +37,24 @@ function outcomeIcon(icon: Outcome["icon"]) {
   }
 }
 
+function outcomeIconColor(icon: Outcome["icon"]) {
+  switch (icon) {
+    case "revenue":
+      return "text-emerald-600/70 dark:text-emerald-400/70";
+    case "users":
+      return "text-blue-600/70 dark:text-blue-400/70";
+    case "retention":
+      return "text-indigo-600/70 dark:text-indigo-400/70";
+    case "nps":
+      return "text-amber-600/70 dark:text-amber-400/70";
+    case "conversion":
+      return "text-rose-600/70 dark:text-rose-400/70";
+  }
+}
+
 function trendColor(trend: Outcome["trend"]) {
-  if (trend === "up") return "text-emerald-400";
-  if (trend === "down") return "text-red-400";
+  if (trend === "up") return "text-emerald-600 dark:text-emerald-400";
+  if (trend === "down") return "text-red-500 dark:text-red-400";
   return "text-muted-foreground";
 }
 
@@ -81,9 +96,11 @@ export function OutcomeBar({
                     : "border-border bg-card hover:border-foreground/20"
               }`}
             >
-              <div className="flex items-center gap-1.5 text-muted-foreground">
-                {outcomeIcon(o.icon)}
-                <span className="text-[10px] uppercase tracking-wider font-medium">
+              <div className="flex items-center gap-1.5">
+                <span className={outcomeIconColor(o.icon)}>
+                  {outcomeIcon(o.icon)}
+                </span>
+                <span className="text-[10px] uppercase tracking-wider font-medium text-muted-foreground">
                   {o.label}
                 </span>
               </div>

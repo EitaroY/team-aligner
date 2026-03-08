@@ -12,6 +12,14 @@ const categoryLabel: Record<string, string> = {
   process: "Process",
 };
 
+const categoryColor: Record<string, string> = {
+  feature: "text-blue-600/80 dark:text-blue-400/80",
+  improvement: "text-amber-600/80 dark:text-amber-400/80",
+  infrastructure: "text-slate-500 dark:text-slate-400",
+  hiring: "text-violet-600/80 dark:text-violet-400/80",
+  process: "text-teal-600/80 dark:text-teal-400/80",
+};
+
 export function TicketCard({
   ticket,
   index,
@@ -48,7 +56,7 @@ export function TicketCard({
         <span className="text-[10px] font-mono text-muted-foreground">
           #{index + 1}
         </span>
-        <span className="text-[10px] text-muted-foreground">
+        <span className={`text-[10px] font-medium ${categoryColor[ticket.category] ?? "text-muted-foreground"}`}>
           {categoryLabel[ticket.category] ?? ticket.category}
         </span>
       </div>

@@ -5,9 +5,9 @@ import type { Feature } from "@/types";
 
 function trendIcon(trend: Feature["trend"], delta: number) {
   if (trend === "up")
-    return <span className="text-emerald-500/70 text-xs">+{delta}%</span>;
+    return <span className="text-emerald-600/80 dark:text-emerald-400/80 text-xs">+{delta}%</span>;
   if (trend === "down")
-    return <span className="text-red-500/70 text-xs">{delta}%</span>;
+    return <span className="text-red-500/80 dark:text-red-400/80 text-xs">{delta}%</span>;
   return <span className="text-muted-foreground text-xs">{delta}%</span>;
 }
 
@@ -44,10 +44,10 @@ export function FeatureCard({
         </div>
       </div>
 
-      {/* Usage bar — monochrome */}
-      <div className="mt-3 h-1.5 w-full rounded-full bg-secondary">
+      {/* Usage bar — subtle blue-gray */}
+      <div className="mt-3 h-1.5 w-full rounded-full bg-slate-100 dark:bg-slate-800">
         <div
-          className="h-full rounded-full bg-foreground/25 transition-all"
+          className="h-full rounded-full bg-slate-300 dark:bg-slate-600 transition-all"
           style={{ width: `${feature.usageRate}%` }}
         />
       </div>
@@ -57,13 +57,13 @@ export function FeatureCard({
         highlightContribution > 0 &&
         outcomeName && (
           <div className="mt-2 flex items-center gap-1.5">
-            <div className="h-1 flex-1 rounded-full bg-secondary">
+            <div className="h-1 flex-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30">
               <div
-                className="h-full rounded-full bg-foreground/40 transition-all"
+                className="h-full rounded-full bg-indigo-300 dark:bg-indigo-500/60 transition-all"
                 style={{ width: `${highlightContribution}%` }}
               />
             </div>
-            <span className="text-[10px] font-medium tabular-nums text-muted-foreground">
+            <span className="text-[10px] font-medium tabular-nums text-indigo-600/80 dark:text-indigo-300/80">
               {highlightContribution}%
             </span>
           </div>
